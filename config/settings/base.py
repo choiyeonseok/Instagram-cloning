@@ -43,9 +43,11 @@ LOCALE_PATHS = [ROOT_DIR.path("locale")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    "default": env.db("DATABASE_URL", default="postgres://localhost/nomadgram")
+    "default": env.db("DATABASE_URL", 
+    default="postgres://postgres:yeon2@localhost:5432/nomadgram")
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
+#DATABASES['default']['PASSWORD'] = ""
 
 # URLS
 # ------------------------------------------------------------------------------
@@ -76,8 +78,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "nomadgram.users.apps.UsersConfig",
-    # Your stuff: custom apps go here
-]
+    "nomadgram.images.apps.ImagesConfig",
+    ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 

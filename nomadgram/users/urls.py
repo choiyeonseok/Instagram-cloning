@@ -15,4 +15,6 @@ urlpatterns = [
     path('<str:username>/followers/', views.UserFollowers.as_view(), name='user_followers'),
     path('<str:username>/following/', views.UserFollowing.as_view(), name='user_following'),
 
+    path('<str:username>/password/', views.ChangePassword.as_view(), name='change'),
+
 ]

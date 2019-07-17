@@ -4,26 +4,38 @@ from nomadgram.users import models as user_models
 
 
 
+
+class CountImageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Image
+        fields = (
+            'file',
+            'comment_count',
+            'like_count',
+
+        )
+
 class FeedUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = user_models.User
         fields = (
             'username',
-            'profile_image',
+            'profile_image'
         )
 
 
 class CommentSerializer(serializers.ModelSerializer):
 
-    creator = FeedUserSerializer()
+    creator = FeedUserSerializer(read_only=True)
 
     class Meta:
         model = models.Comment
         fields = (
             'id',
             'message',
-            'creator',
+            'creator'
         )
 
 class LikeSerializer(serializers.ModelSerializer):
@@ -48,7 +60,7 @@ class ImageSerializer(serializers.ModelSerializer):
             'caption',
             'creator',
             "comments",
-            "like_count",
+            "like_count"
             )
 
 

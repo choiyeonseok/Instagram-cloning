@@ -15,14 +15,14 @@ class ImageAdmin(admin.ModelAdmin):
         'updated_at'
         ]
 
-    list_display_link = [
-        'location',
+    list_display_links = [
+        'location'
         
     ] 
 
     search_fields = [
         'file',
-        'location',
+        'location'
     ]
 
 

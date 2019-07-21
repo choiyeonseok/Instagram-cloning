@@ -43,7 +43,7 @@ LOCALE_PATHS = [ROOT_DIR.path("locale")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    "default": env.db("DATABASE_URL", 
+    "default": env.db("DATABASE_URL",
     default="postgres://postgres:yeon2@localhost:5432/nomadgram")
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
@@ -286,7 +286,6 @@ REST_FRAMEWORK = {
 
 
 }
-
 
 REST_USE_JWT = True
 ACCOUNT_LOGOUT_ON_GET = True

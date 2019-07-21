@@ -38,7 +38,7 @@ class Images(APIView):
         serializer = serializers.ImageSerializer(sorted_list, many=True)
 
         return Response(serializer.data)
-        
+
 
     def post(self, request, format=None):
 
@@ -125,7 +125,7 @@ class LikeImage(APIView):
             
             notification_views.create_notification(user, found_image.creator, 'like', found_image)
 
-        return Response(status=201)
+            return Response(status=201)
 
 
 class CommentOnImage(APIView):

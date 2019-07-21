@@ -8,8 +8,9 @@ class Notification(image_models.TimeStampModel):
     TYPE_CHOICES = (
         ('like', 'Like'),
         ('comment', 'Comment'),
-        ('follow', 'Follow'),
+        ('follow', 'Follow')
     )
+
 
     creator = models.ForeignKey(user_models.User, on_delete=models.CASCADE, related_name='creator')
     to = models.ForeignKey(user_models.User, on_delete=models.CASCADE, related_name='to')
@@ -25,5 +26,4 @@ class Notification(image_models.TimeStampModel):
 
     def __str__(self):
         return 'From: {} - To: {}'.format(self.creator, self.to)
-    
-     
+

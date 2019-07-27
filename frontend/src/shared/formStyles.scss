@@ -1,4 +1,4 @@
-@import "../../config/variables";
+@import "../config/variables";
 
 .form-component {
   margin-top: 5px;
@@ -16,7 +16,7 @@
     text-indent: 110%;
     margin: 22px auto 12px;
     color: black;
-    background-image: url('../../images/4f48d3d2062b.png');
+    background-image: url('../images/4f48d3d2062b.png');
   }
   .form {
     display: flex;

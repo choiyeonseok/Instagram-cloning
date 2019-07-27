@@ -40,9 +40,14 @@
   }
   .button {
     @include blueButton();
-    svg  {
-      margin-right: 10px;
+    i  {
+      font-size: 18px;
+      margin-right: 5px;
     }
+    svg {
+        margin-right: 10px;
+    }
+
   }
   .divider {
     text-transform: uppercase;
@@ -73,16 +78,24 @@
     }
   }
   .facebook-link {
-    display: flex;
     align-items: center;
     color: #385185;
     justify-content: center;
     margin-bottom: 25px;
-    svg {
+    cursor: pointer;
+    background-color: white;
+    border: 0;
+    font-size: $normal-font-size;
+    text-align: center;
+    i {
       margin-right: 5px;
     }
+    &:focus,
+    &:active {
+      outline: none;
+    }
   }
-  .forgotLink {
+  .forgot-link {
     font-size: $small-font-size;
     color: $dark-blue;
   }

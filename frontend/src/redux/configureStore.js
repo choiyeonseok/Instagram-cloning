@@ -1,9 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
-import users from './modules/users';
+import user from './modules/user';
 import thunk from "redux-thunk";
 import { connectRouter, routerMiddleware } from "connected-react-router";
-import createBrowserHistory from "history/createBrowserHistory";
-
+import { createBrowserHistory } from "history";
+//import Reactotron from "../ReactotronConfig";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { i18nState } from "redux-i18n";
 
 const env = process.env.NODE_ENV;
 
@@ -19,13 +21,23 @@ if(env === "development"){
 }
 
 const reducer = combineReducers({
-    users,
-    router: connectRouter(history)
+    user,
+    router: connectRouter(history),
+    i18nState
 });
 
+let store;
+if (env === "development"){
+    store = initialState =>
+        createStore(reducer, composeWithDevTools(applyMiddleware(...middlewares)));
+}else {
+    store = initialState => createStore(reducer, applyMiddleware(...middlewares));
+}
+
+
 //...middlewares => unpack an array!
-let store = initialState =>
-    createStore(reducer, applyMiddleware(...middlewares));
+// let store = initialState =>
+//     createStore(reducer, applyMiddleware(...middlewares));
 
 export { history };
 

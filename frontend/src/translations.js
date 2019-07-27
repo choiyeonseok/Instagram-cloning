@@ -1,7 +1,7 @@
 export const translations = {
-    es: {
-        "Login in ": "Iniciaer Sesion",
-        "About Us": "Sobre nosotros"
+    kr: {
+        "Log in": "로그인",
+        "About Us": "인스타그램정보"
     }
 };
 

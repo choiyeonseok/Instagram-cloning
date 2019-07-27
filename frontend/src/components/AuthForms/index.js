@@ -5,38 +5,56 @@ import Ionicon from "react-ionicons";
 
 
 export const LoginForm = props => (
-    <div>
-        <form>
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Password" />
-            <input type="submit" value="Log in" />
+
+    <div className="form-component">
+        <h1 className="title">Instagram</h1>
+        <form className="form">
+            <input type="text" placeholder="Username" className="text-input" />
+            <input
+                type="password"
+                placeholder="Password"
+                className="text-input"
+            />
+            <input type="submit" value="Log in" className="button" />
         </form>
-        <span>or</span>
-        <span>
+
+        <span className="divider">or</span>
+        <span className="facebook-link">
             <Ionicon icon="logo-facebook" fontSize="20px" color="#385185" /> Log in
             with Facebook
-    </span>
-        <span>Forgot password?</span>
+        </span>
+        <span className="forgot-link">Forgot password?</span>
     </div>
 );
 
 export const SignupForm = props => (
-    <div>
-        <h3>Sign up to see photos and videos from your friends.</h3>
-        <button>
+    <div className="form-component">
+        <h1 className="title">Instagram</h1>
+        <h3 className="signup-header">
+            Sign up to see photos and videos from your friends.
+        </h3>
+        <button className="button">
             <Ionicon icon="logo-facebook" fontSize="20px" color="white" /> Log in
             with Facebook
-    </button>
-        <span>or</span>
-        <form>
-            <input type="email" placeholder="Email" />
-            <input type="text" placeholder="Full Name" />
-            <input type="username" placeholder="Username" />
-            <input type="password" placeholder="Password" />
-            <input type="submit" value="Sign up" />
+        </button>
+        <span className="divider">or</span>
+        <form className="form">
+            <input type="email" placeholder="Email" className="text-input" />
+            <input type="text" placeholder="Full Name" className="text-input"/>
+            <input 
+                type="username" 
+                placeholder="Username" 
+                className="text-input"
+            />
+            <input 
+                type="password" 
+                placeholder="Password" 
+                className="text-input"
+            />
+            <input type="submit" value="Sign up" className="button"/>
         </form>
-        <p>
+        <p className="terms">
             By signing up, you agree to our <span>Terms & Privacy Policy</span>.
-    </p>
+        </p>
     </div>
 );

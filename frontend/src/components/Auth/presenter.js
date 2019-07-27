@@ -13,7 +13,7 @@ const Auth = (props, context) => (
                 {props.action === "signup" && <SignupForm />}
             </div>
             <div className="white-box">
-                {props.action === "login" && (<p>
+                {props.action === "login" && (<p className="text">
                     Don't have an account?{" "}
                     <span
                         className="change-link"
@@ -22,7 +22,7 @@ const Auth = (props, context) => (
                         Sign up
                     </span>
                 </p>)}
-                {props.action === "signup" && (<p>
+                {props.action === "signup" && (<p className="text">
                     Have an account?{" "}
                     <span
                         className="change-link"

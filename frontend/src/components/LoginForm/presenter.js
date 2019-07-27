@@ -9,14 +9,28 @@ const LoginForm = (props, context) => (
 
     <div className="form-component">
         <h1 className="title">Instagram</h1>
-        <form className="form">
-            <input type="text" placeholder={context.t("Username")} className="text-input" />
+        <form className="form" onSubmit={props.handleSubmit}>
+            <input 
+                type="text" 
+                placeholder={context.t("Username")} 
+                className="text-input" 
+                value={props.usernameValue}
+                onChange={props.handleInputChange}
+                name="username"
+            />
             <input
                 type="password"
                 placeholder={context.t("Password")}
                 className="text-input"
+                value={props.passwordValue}
+                onChange={props.handleInputChange}
+                name="password"
             />
-            <input type="submit" value={context.t("Log in")} className="button" />
+            <input 
+                type="submit" 
+                value={context.t("Log in")} 
+                className="button" 
+            />
         </form>
 
         <span className="divider">or</span>
@@ -27,8 +41,15 @@ const LoginForm = (props, context) => (
     </div>
 );
 
+LoginForm.propTypes = {
+    usernameValue: PropTypes.string.isRequired,
+    passwordValue: PropTypes.string.isRequired,
+    handleInputChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+};
+
 LoginForm.contextTypes = {
     t: PropTypes.func.isRequired
-}
+};
 
 export default LoginForm;

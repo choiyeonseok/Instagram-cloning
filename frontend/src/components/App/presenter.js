@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import Footer from "../Footer";
 import Auth from "../Auth/";
 import Navigation from "../Navigation";
+import Feed from "../Feed";
 
 
 
@@ -21,7 +22,7 @@ App.PropTypes = {
 
 const PrivateRoutes = props => (
     <Switch>
-        <Route exact path="/" render={() => "feed"} />
+        <Route exact path="/" component={Feed} />
         <Route exact path="/explore" render={() => "explore"} />
     </Switch>
 )

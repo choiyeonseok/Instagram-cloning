@@ -2,7 +2,7 @@
 Base settings to build other settings files upon.
 """
 
-import environ
+import environ, os
 
 ROOT_DIR = (
     environ.Path(__file__) - 3
@@ -45,6 +45,12 @@ LOCALE_PATHS = [ROOT_DIR.path("locale")]
 DATABASES = {
     "default": env.db("DATABASE_URL",
     default="postgres://postgres:yeon2@localhost:5432/nomadgram")
+}
+DATABASES = {
+    "default": {
+       'ENGINE': 'django.db.backends.sqlite3',
+       'NAME': os.path.join(ROOT_DIR, 'db.sqlite3'),
+  }
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 #DATABASES['default']['PASSWORD'] = ""

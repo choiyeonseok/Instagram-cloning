@@ -16,7 +16,7 @@ urlpatterns = [
     # User management
     #path("api-token-auth/", obtain_jwt_token),
     path("rest-auth/", include('rest_auth.urls')),
-    path("rest-auth/registration", include('rest_auth.registration.urls')),
+    path("rest-auth/registration/", include('rest_auth.registration.urls')),
     path("users/", include("nomadgram.users.urls", namespace="users")),
     path("images/", include("nomadgram.images.urls", namespace="images")),
     path("notifications/", include("nomadgram.notifications.urls", namespace="notifications")),

@@ -1,0 +1,12 @@
+@import "../../config/variables";
+
+.feed{
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    max-width: $max-page-width;
+    margin:0 auto;
+    align-items: center;
+    justify-content: center;
+}

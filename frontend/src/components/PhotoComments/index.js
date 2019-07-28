@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import  "./styles.scss";
 
 const PhotoComments = props => (
-    <div>
-        <ul>
+    <div className="comments">
+        <ul className="list">
             <Comment username={props.creator} comment={props.caption} />
             {props.comments.map(comment => (
                 <Comment
@@ -18,10 +18,12 @@ const PhotoComments = props => (
 );
 
 const Comment = props => (
-    <li>
-        <span>{props.username}</span> <span>{props.comment}</span>
+    <li className="comment">
+        <span className="username">{props.username}</span>{" "}
+        <span className="message">{props.comment}</span>
     </li>
 );
+
 
 PhotoComments.propTypes = {
     caption: PropTypes.string.isRequired,

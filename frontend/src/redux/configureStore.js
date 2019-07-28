@@ -1,11 +1,13 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import user from './modules/user';
+import photos from './modules/photos';
 import thunk from "redux-thunk";
 import { connectRouter, routerMiddleware } from "connected-react-router";
 import { createBrowserHistory } from "history";
 //import Reactotron from "../ReactotronConfig";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { i18nState } from "redux-i18n";
+
 
 const env = process.env.NODE_ENV;
 
@@ -22,6 +24,7 @@ if(env === "development"){
 
 const reducer = combineReducers({
     user,
+    photos,
     router: connectRouter(history),
     i18nState
 });

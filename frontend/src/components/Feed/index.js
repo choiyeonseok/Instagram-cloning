@@ -3,6 +3,13 @@ import Container from "./container";
 import { actionCreators as photoActions } from "../../redux/modules/photos";
 
 
+const mapStateToProps = (state, ownProps) => {
+    const { photos: { feed } } = state;
+    return {
+        feed
+    };
+};
+
 const mapDistpatchToProps = (dispatch, ownProps) => {
     return {
         getFeed: () => {
@@ -11,4 +18,4 @@ const mapDistpatchToProps = (dispatch, ownProps) => {
     };
 };
 
-export default connect(null, mapDistpatchToProps)(Container);
+export default connect(mapStateToProps, mapDistpatchToProps)(Container);

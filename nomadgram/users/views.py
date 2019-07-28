@@ -71,7 +71,7 @@ class UserProfile(APIView):
         
         if found_user.username != user.username:
 
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
         else:
 
@@ -132,7 +132,7 @@ class Search(APIView):
 
         else:
 
-            return Response(status=status.HTTP_400_BAD_REQEUST)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
         
 
@@ -176,4 +176,4 @@ class ChangePassword(APIView):
         
         else:
             
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+            return Response(status=status.HTTP_400_BAD_REQUEST)

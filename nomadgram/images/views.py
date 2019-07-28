@@ -220,6 +220,10 @@ class ImageDetail(APIView):
 
         image = get_object_or_404(models.Image, id=image_id, creator=user)
 
+        if image is None:
+
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
         serializer = serializers.InputImageSerializer(image, data=request.data, partial=True)
 
         if serializer.is_valid():
@@ -243,7 +247,7 @@ class ImageDetail(APIView):
 
         if image is None:
 
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
         image.delete()
 

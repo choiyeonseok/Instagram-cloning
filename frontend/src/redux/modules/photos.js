@@ -1,7 +1,9 @@
 
 
 //imports
+
 import { actionCreators as userActions } from "./user";
+
 //actions
 
 const SET_FEED = "SET_FEED";

@@ -2,6 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import  "./styles.scss";
 import Loading from "../Loading";
+import FeedPhoto from "../FeedPhoto";
+
+
 
 const Feed = props => {
     if(props.loading){
@@ -20,7 +23,7 @@ const LoadingFeed = props => (
 
 const RenderFeed = props => (
     <div className="feed">
-        {props.feed.map(post => post.location)}
+        {props.feed.map(photo => <FeedPhoto {...photo} key={photo.id}/>)}
     </div>
 )
 

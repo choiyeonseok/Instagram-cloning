@@ -7,7 +7,10 @@ class UsersConfig(AppConfig):
     verbose_name = _("Users")
 
     def ready(self):
-        try:
-            import nomadgram.users.signals  # noqa F401
-        except ImportError:
-            pass
+        # try:
+        #     import nomadgram.users.signals  # noqa F401
+        # except ImportError:
+        #     pass
+
+
+        from .signals import user_signed_up

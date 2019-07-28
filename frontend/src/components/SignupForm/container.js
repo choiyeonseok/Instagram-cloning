@@ -12,7 +12,7 @@ class Container extends Component {
     };
 
     static propTypes = {
-        facebookLogin: PropTypes.string.isRequired,
+        facebookLogin: PropTypes.func.isRequired,
     };
 
     render() {

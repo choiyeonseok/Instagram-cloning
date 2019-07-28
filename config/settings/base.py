@@ -65,7 +65,7 @@ DJANGO_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "django.contrib.humanize", # Handy template tags
+    "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
 ]
 THIRD_PARTY_APPS = [
@@ -73,14 +73,14 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "allauth.socialaccount.providers.facebook",
     "rest_framework",
     "rest_framework.authtoken",
-    "rest_framework_jwt",
     "taggit", 
     "taggit_serializer",
     "rest_auth",
     "rest_auth.registration",
-    "corsheaders",
+    "corsheaders", # To accept requests from React
 ]
 
 LOCAL_APPS = [
@@ -279,6 +279,8 @@ SOCIALACCOUNT_ADAPTER = "nomadgram.users.adapters.SocialAccountAdapter"
 # Your stuff...
 # ------------------------------------------------------------------------------
 
+AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
+
 TAGGIT_CASE_INSENSITIVE = True
 
 REST_FRAMEWORK = {
@@ -301,4 +303,39 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 JWT_AUTH = {
     'JWT_VERIFY_EXPIRATION': False
+}
+
+SOCIALACCOUNT_PROVIDERS = {  
+    'facebook': {  
+        'SCOPE': [  
+            'email',  
+            'public_profile',  
+            'user_friends'  
+        ],  
+        'FIELDS': [  
+            'id',  
+            'email',  
+            'name',  
+            'first_name',  
+            'last_name',  
+            'verified',
+            'locale',  
+            'timezone',  
+            'link',  
+            'gender',  
+            'updated_time',
+            'picture' 
+        ],  
+        'AUTH_PARAMS': {  
+            #'auth_type': 'reauthenticate'  
+        },  
+        'METHOD': 'oauth2',  
+        #'LOCALE_FUNC': 'path.to.callable',  
+        'VERIFIED_EMAIL': True,  
+        'VERSION': 'v2.4'  
+    }
+}  
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'nomadgram.users.serializers.SignUpSerializer'
 }

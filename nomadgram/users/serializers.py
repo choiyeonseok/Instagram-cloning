@@ -31,14 +31,24 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 class ListUserSerializer(serializers.ModelSerializer):
 
+    following = serializers.SerializerMethodField()
+
     class Meta:
         model = models.User
         fields = (
             'profile_image',
             'username',
-            'name'
+            'name',
+            'following',
         )
 
+    #following을 할경우 팔로잉 중이라고 표시해주기 true/false로
+    def get_following(self, obj):
+        if 'request' in self.context:
+            request = self.context['request']
+            if obj in request.user.following.all():
+                return True
+        return False
 
 class SignUpSerializer(RegisterSerializer):
 

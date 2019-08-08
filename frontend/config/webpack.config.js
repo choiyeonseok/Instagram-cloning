@@ -107,12 +107,7 @@ module.exports = function(webpackEnv) {
       },
     ].filter(Boolean);
     if (preProcessor) {
-      loaders.push({
-        loader: require.resolve(preProcessor),
-        options: {
-          sourceMap: isEnvProduction && shouldUseSourceMap,
-        },
-      });
+      loaders.push(preProcessor);
     }
     return loaders;
   };
@@ -416,6 +411,7 @@ module.exports = function(webpackEnv) {
                 importLoaders: 1,
                 sourceMap: isEnvProduction && shouldUseSourceMap,
                 modules: true,
+                camelCase: true,
                 getLocalIdent: getCSSModuleLocalIdent,
               }),
             },
@@ -447,9 +443,16 @@ module.exports = function(webpackEnv) {
                   importLoaders: 2,
                   sourceMap: isEnvProduction && shouldUseSourceMap,
                   modules: true,
+                  camelCase: true,
                   getLocalIdent: getCSSModuleLocalIdent,
                 },
-                'sass-loader'
+                {
+                  loader: require.resolve('sass-loader'),
+                  options: {
+                    data: `@import "../src/config/_variables.scss";`
+                  }
+                }
+                
               ),
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.

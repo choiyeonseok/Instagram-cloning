@@ -4,6 +4,8 @@ import users from "./modules/users";
 import { connectRouter } from 'connected-react-router';
 import { routerMiddleware } from "react-router-redux";
 import createHistory from "history/createBrowserHistory";
+import { composeWithDevTools } from "redux-devtools-extension";
+
 
 const env = process.env.NODE_ENV;
 
@@ -19,12 +21,26 @@ if(env ==='development'){
 }
 
 const reducer = combineReducers({
+    //reducer는 state을 action을 통해 변경할 수 있다.
     users,
     router: connectRouter(history),
 });
 
-let store = initialState => 
-    createStore(reducer, applyMiddleware(...middlewares));
+let store;
+
+if ( env === "development") {
+    store = initialState =>
+        createStore(
+            reducer, 
+            composeWithDevTools(applyMiddleware(...middlewares))
+        );
+} else {
+    store = initialState =>
+        createStore(
+            reducer,
+            applyMiddleware(...middlewares)
+        );
+}
 
 
 export { history };

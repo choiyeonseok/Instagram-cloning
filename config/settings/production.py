@@ -74,13 +74,13 @@ TEMPLATES[0]["OPTIONS"]["loaders"] = [  # noqa F405
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
 DEFAULT_FROM_EMAIL = env(
-    "DJANGO_DEFAULT_FROM_EMAIL", default="Nomadgram <noreply@nomadcoders.co>"
+    "DJANGO_DEFAULT_FROM_EMAIL", default="nomadgram2 <noreply@nomadcoders.co>"
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#server-email
 SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-subject-prefix
 EMAIL_SUBJECT_PREFIX = env(
-    "DJANGO_EMAIL_SUBJECT_PREFIX", default="[Nomadgram]"
+    "DJANGO_EMAIL_SUBJECT_PREFIX", default="[nomadgram2]"
 )
 
 # ADMIN

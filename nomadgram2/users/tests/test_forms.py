@@ -1,7 +1,7 @@
 import pytest
 
-from nomadgram.users.forms import UserCreationForm
-from nomadgram.users.tests.factories import UserFactory
+from nomadgram2.users.forms import UserCreationForm
+from nomadgram2.users.tests.factories import UserFactory
 
 pytestmark = pytest.mark.django_db
 

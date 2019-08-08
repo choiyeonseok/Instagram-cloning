@@ -1,6 +1,6 @@
 from django.db import models
-from nomadgram.users import models as user_models
-from nomadgram.images import models as image_models
+from nomadgram2.users import models as user_models
+from nomadgram2.images import models as image_models
 
 
 class Notification(image_models.TimeStampModel):

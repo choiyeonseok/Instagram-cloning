@@ -1,5 +1,5 @@
 from django.db import models
-from nomadgram.users import models as user_models
+from nomadgram2.users import models as user_models
 from taggit.managers import TaggableManager
 from django.contrib.humanize.templatetags.humanize import naturaltime
 

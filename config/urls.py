@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from rest_framework_jwt.views import obtain_jwt_token
-from nomadgram import views
+from nomadgram2 import views
 
 
 urlpatterns = [
@@ -17,9 +17,9 @@ urlpatterns = [
     #path("api-token-auth/", obtain_jwt_token),
     path("rest-auth/", include('rest_auth.urls')),
     path("rest-auth/registration/", include('rest_auth.registration.urls')),
-    path("users/", include("nomadgram.users.urls", namespace="users")),
-    path("images/", include("nomadgram.images.urls", namespace="images")),
-    path("notifications/", include("nomadgram.notifications.urls", namespace="notifications")),
+    path("users/", include("nomadgram2.users.urls", namespace="users")),
+    path("images/", include("nomadgram2.images.urls", namespace="images")),
+    path("notifications/", include("nomadgram2.notifications.urls", namespace="notifications")),
     path("accounts/", include("allauth.urls")),
     path("", views.ReactAppView.as_view()),
     # Your stuff: custom urls includes go here

@@ -3,7 +3,7 @@ from rest_auth.registration.serializers import RegisterSerializer
 from allauth.account.adapter import get_adapter
 from allauth.account.utils import setup_user_email
 from . import models
-from nomadgram.images import serializers as images_serializers
+from nomadgram2.images import serializers as images_serializers
 
 
 

@@ -3,12 +3,12 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UsersConfig(AppConfig):
-    name = "nomadgram.users"
+    name = "nomadgram2.users"
     verbose_name = _("Users")
 
     def ready(self):
         # try:
-        #     import nomadgram.users.signals  # noqa F401
+        #     import nomadgram2.users.signals  # noqa F401
         # except ImportError:
         #     pass
 

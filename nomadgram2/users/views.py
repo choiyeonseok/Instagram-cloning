@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from . import models, serializers
 from django.shortcuts import get_object_or_404
-from nomadgram.notifications import views as notification_views
+from nomadgram2.notifications import views as notification_views
 
 
 

@@ -6,8 +6,8 @@ import environ, os
 
 ROOT_DIR = (
     environ.Path(__file__) - 3
-)  # (nomadgram/config/settings/base.py - 3 = nomadgram/)
-APPS_DIR = ROOT_DIR.path("nomadgram")
+)  # (nomadgram2/config/settings/base.py - 3 = nomadgram2/)
+APPS_DIR = ROOT_DIR.path("nomadgram2")
 
 env = environ.Env()
 
@@ -44,7 +44,7 @@ LOCALE_PATHS = [ROOT_DIR.path("locale")]
 
 DATABASES = {
     "default": env.db("DATABASE_URL",
-    default="postgres://postgres:yeon2@localhost:5432/nomadgram")
+    default="postgres://postgres:yeon2@localhost:5432/nomadgram2")
 }
 DATABASES = {
     "default": {
@@ -90,9 +90,9 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "nomadgram.users.apps.UsersConfig",
-    "nomadgram.images.apps.ImagesConfig",
-    "nomadgram.notifications.apps.NotificationsConfig",
+    "nomadgram2.users.apps.UsersConfig",
+    "nomadgram2.images.apps.ImagesConfig",
+    "nomadgram2.notifications.apps.NotificationsConfig",
     ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -100,7 +100,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {"sites": "nomadgram.contrib.sites.migrations"}
+MIGRATION_MODULES = {"sites": "nomadgram2.contrib.sites.migrations"}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
@@ -160,7 +160,7 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = [
     str(APPS_DIR.path("static")),
-    str(ROOT_DIR.path("frontend", "build", "static")),
+    #str(ROOT_DIR.path("frontend", "build", "static")),
     ]
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = [
@@ -277,9 +277,9 @@ ACCOUNT_EMAIL_REQUIRED = False
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = "none"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_ADAPTER = "nomadgram.users.adapters.AccountAdapter"
+ACCOUNT_ADAPTER = "nomadgram2.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-SOCIALACCOUNT_ADAPTER = "nomadgram.users.adapters.SocialAccountAdapter"
+SOCIALACCOUNT_ADAPTER = "nomadgram2.users.adapters.SocialAccountAdapter"
 
 
 # Your stuff...
@@ -295,8 +295,8 @@ REST_FRAMEWORK = {
 ),
 'DEFAULT_AUTHENTICATION_CLASSES': (
     'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    # 'rest_framework.authentication.SessionAuthentication',
-    # 'rest_framework.authentication.BasicAuthentication',
+    'rest_framework.authentication.SessionAuthentication',
+    'rest_framework.authentication.BasicAuthentication',
 ),
 
 
@@ -304,7 +304,7 @@ REST_FRAMEWORK = {
 
 REST_USE_JWT = True
 ACCOUNT_LOGOUT_ON_GET = True
-
+#
 CORS_ORIGIN_ALLOW_ALL = True
 
 JWT_AUTH = {
@@ -343,5 +343,5 @@ SOCIALACCOUNT_PROVIDERS = {
 }  
 
 REST_AUTH_REGISTER_SERIALIZERS = {
-    'REGISTER_SERIALIZER': 'nomadgram.users.serializers.SignUpSerializer'
+    'REGISTER_SERIALIZER': 'nomadgram2.users.serializers.SignUpSerializer'
 }

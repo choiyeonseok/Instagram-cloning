@@ -2,7 +2,7 @@ import pytest
 from django.conf import settings
 from django.test import RequestFactory
 
-from nomadgram.users.tests.factories import UserFactory
+from nomadgram2.users.tests.factories import UserFactory
 
 
 @pytest.fixture(autouse=True)

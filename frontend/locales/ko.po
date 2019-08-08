@@ -1,0 +1,44 @@
+msgid ""
+msgstr ""
+"Language: ko"
+
+#: src/components/Footer/index.js
+msgid "About Us"
+msgstr "인스타그램"
+
+#: src/components/Footer/index.js
+msgid "Support"
+msgstr "지원"
+
+#: src/components/Footer/index.js
+msgid "Blog"
+msgstr "블로그"
+
+#: src/components/Footer/index.js
+msgid "Press"
+msgstr "출판"
+
+#: src/components/Footer/index.js
+msgid "API"
+msgstr "에이피아이"
+
+#: src/components/Footer/index.js
+msgid "Jobs"
+msgstr "직업"
+
+#: src/components/Footer/index.js
+msgid "Privacy"
+msgstr "개인정보"
+
+#: src/components/Footer/index.js
+msgid "Terms"
+msgstr "약관"
+
+#: src/components/Footer/index.js
+msgid "Directory"
+msgstr "디렉토리"
+
+#: src/components/Footer/index.js
+msgid "Language"
+msgstr "언어"
+

@@ -5,6 +5,7 @@ import { connectRouter } from 'connected-react-router';
 import { routerMiddleware } from "react-router-redux";
 import createHistory from "history/createBrowserHistory";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { i18nState } from "redux-i18n";
 
 
 const env = process.env.NODE_ENV;
@@ -24,6 +25,7 @@ const reducer = combineReducers({
     //reducer는 state을 action을 통해 변경할 수 있다.
     users,
     router: connectRouter(history),
+    i18nState,
 });
 
 let store;

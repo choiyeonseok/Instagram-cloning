@@ -57,6 +57,7 @@
     "redux": "^4.0.4",
     "redux-i18n": "^1.5.18",
     "redux-thunk": "^2.3.0",
+    "reset-css": "^4.0.1",
     "resolve": "1.10.0",
     "sass-loader": "^7.1.0",
     "semver": "6.0.0",

@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
 import user from "./modules/user";
+import photos from "./modules/photos";
 import { connectRouter } from 'connected-react-router';
 import { routerMiddleware } from "react-router-redux";
 import * as createHistory from "history";
@@ -24,6 +25,7 @@ if(env ==='development'){
 const reducer = combineReducers({
     //reducer는 state을 action을 통해 변경할 수 있다.
     user,
+    photos,
     router: connectRouter(history),
     i18nState,
 });

@@ -14,11 +14,27 @@ class Container extends Component {
 
     componentDidMount() {
         const { getFeed } = this.props;
-        getFeed();
+        if (!this.props.feed){
+            getFeed();
+        } else {
+            this.setState ({
+                loading: false
+            }); //이게 없으면 왔다갓다 할때마다 로딩을 계속한다.
+        }
     }
 
+    componentWillReceiveProps = nextProps => {
+        if (nextProps.feed) {
+            this.setState({
+                loading: false
+            });
+        }
+
+    };
+
     render () {
-        return <Feed {...this.state}/>;
+        const { feed } = this.props;
+        return <Feed {...this.state} feed={feed}/>;
     }
 }
 

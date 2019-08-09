@@ -21,7 +21,7 @@ const FeedPhoto = (props, context) => {
             </header>
             <img src={props.file} alt={props.caption} />
             <div>
-                <PhotoActions number={props.like_count} />
+                <PhotoActions number={props.like_count} isLiked={props.is_liked} photoId={props.id}/>
                 <PhotoComments 
                     comments={props.comments} 
                     creator={props.creator.username} 
@@ -42,6 +42,7 @@ FeedPhoto.propTypes = {
     location: PropTypes.string.isRequired,
     file: PropTypes.string.isRequired,
     like_count: PropTypes.number.isRequired,
+    is_liked: PropTypes.bool.isRequired,
     caption: PropTypes.string.isRequired,
     comments: PropTypes.arrayOf(
         PropTypes.shape({

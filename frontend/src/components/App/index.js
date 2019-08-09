@@ -3,9 +3,10 @@ import Container from "./container";
 
 
 const mapStateToProps = (state, ownProps) => {
-    const { user } = state;
+    const { user, router: { location } } = state;
     return {
-        isLoggedIn: user.isLoggedIn // 새로운 프롭 생성
+        isLoggedIn: user.isLoggedIn, // 새로운 프롭 생성
+        pathname: location.pathname
     };
 };
 

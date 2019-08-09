@@ -1,0 +1,19 @@
+@import "../../config/_variables.scss";
+
+
+
+.container {
+    .spinner {
+        height: 32px;
+        animation: spinner 1.2s steps(12) infinite;
+    }
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -5,6 +5,7 @@ import PhotoActions from "../PhotoActions";
 import PhotoComments from "../PhotoComments";
 import TimeStamp from "../TimeStamp";
 import CommentBox from "../CommentBox";
+import UserList from "../UserList";
 
 const FeedPhoto = (props, context) => {
     return (
@@ -21,18 +22,30 @@ const FeedPhoto = (props, context) => {
             </header>
             <img src={props.file} alt={props.caption} />
             <div>
-                <PhotoActions number={props.like_count} isLiked={props.is_liked} photoId={props.id}/>
+                <PhotoActions 
+                    number={props.like_count} 
+                    isLiked={props.is_liked} 
+                    photoId={props.id}
+                    openLikes={props.openLikes}
+                    />
                 <PhotoComments 
                     comments={props.comments} 
                     creator={props.creator.username} 
                     caption={props.caption}/>
                 <TimeStamp time={props.natural_time} />
                 <CommentBox photoId={props.id}/>
+
+                {props.seeingLikes && (
+                    <UserList title={context.t("Likes")} closeLikes={props.closeLikes} />
+                )}            
             </div>
         </div>
     );
 };
 
+FeedPhoto.contextTypes = {
+    t: PropTypes.func.isRequired
+};
 
 FeedPhoto.propTypes = {
     creator: PropTypes.shape({
@@ -53,7 +66,11 @@ FeedPhoto.propTypes = {
         }).isRequired,
     })
     ).isRequired,
-    natural_time: PropTypes.string.isRequired
+    natural_time: PropTypes.string.isRequired,
+    seeingLikes: PropTypes.bool.isRequired,
+    closeLikes: PropTypes.func.isRequired,
+    openLikes: PropTypes.func.isRequired
+
 };
 
 export default FeedPhoto;

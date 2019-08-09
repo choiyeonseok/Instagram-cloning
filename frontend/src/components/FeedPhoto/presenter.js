@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./styles.scss";
+import PhotoActions from "../PhotoActions";
 
 const FeedPhoto = (props, context) => {
     return (
@@ -16,9 +17,9 @@ const FeedPhoto = (props, context) => {
                 </div>
             </header>
             <img src={props.file} alt={props.caption} />
-            {/* <div>
+            <div>
                 <PhotoActions number={props.like_count} />
-            </div> */}
+            </div>
         </div>
     );
 };

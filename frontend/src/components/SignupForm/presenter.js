@@ -5,7 +5,7 @@ import "../../shared/formStyles.scss";
 
 
 const SignupForm = (props, context) => (
-    <div className="componenet">
+    <div className="form-component" onSubmit={props.handleSubmit}>
         <h3 className="signup-header">
             {context.t("Sign up to see photos and videos from your friends.")}
         </h3>
@@ -14,7 +14,7 @@ const SignupForm = (props, context) => (
             {context.t("Log in with Facebook")}
         </button>
         <span className="divider">or</span>
-        <form className="form">
+        <form className="form" >
             <input
                 type="email"
                 placeholder={context.t("Email")}
@@ -51,5 +51,14 @@ const SignupForm = (props, context) => (
 SignupForm.contextTypes = {
     t: PropTypes.func.isRequired
 };
+
+SignupForm.propTypes = {
+    emailValue: PropTypes.string.isRequired,
+    fullNameValue: PropTypes.string.isRequired,
+    usernameValue: PropTypes.string.isRequired,
+    passwordValue: PropTypes.string.isRequired,
+    handleInputChange: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+}
 
 export default SignupForm;

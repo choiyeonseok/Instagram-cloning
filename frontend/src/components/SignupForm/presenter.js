@@ -1,5 +1,4 @@
 import React from "react";
-import Ionicon from "react-ionicons";
 import PropTypes from "prop-types";
 import "../../shared/formStyles.scss";
 import FacebookLogin from "react-facebook-login";

@@ -1,5 +1,4 @@
 import React from "react";
-import Ionicon from "react-ionicons";
 import PropTypes from "prop-types";
 import "../../shared/formStyles.scss";
 import FacebookLogin from "react-facebook-login";
@@ -58,7 +57,7 @@ LoginForm.propTypes = {
     handleInputChange: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     handleFacebookLogin: PropTypes.func.isRequired
-    
+
 }
 
 export default LoginForm;

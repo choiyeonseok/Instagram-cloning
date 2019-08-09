@@ -92,6 +92,28 @@ function unlikePhoto(photoId) {
     };
 }
 
+
+function commentPhoto(photoId, message){
+    return (dispatch, getState) => {
+        const { user :  { token } } = getState();  // 로그인 되어있을 때만 가능
+        fetch(`/images/${photoId}/comments/`, {
+            method: "POST",
+            headers : {
+                Authorization: `JWT ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message
+            })
+        })
+        .then(response => {
+            if (response.status === 401) {
+                dispatch(userActions.logout());
+            }
+        });
+    };
+}
+
 // initial state
 
 const initialState = {};
@@ -152,6 +174,7 @@ const actionCreators = {
     getFeed,
     likePhoto,
     unlikePhoto,
+    commentPhoto,
 };
 
 export { actionCreators };

@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.scss";
-import { LoginForm, SignupForm } from "../AuthForms";
+import LoginForm from "../LoginForm";
+import SignupForm from "../SignupForm";
 
 const Auth = (props, context) => (
     <main className="auth">
@@ -48,4 +49,5 @@ const Auth = (props, context) => (
         </div>
     </main>
 );
+
 export default Auth;

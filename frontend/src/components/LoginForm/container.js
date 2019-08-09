@@ -13,7 +13,9 @@ class Container extends Component {
             handleInputChange={this._handleInputChange}
             _handleSubmit={this._handleSubmit} 
             usernameValue={username} 
-            passwordValue={password} />;
+            passwordValue={password} 
+            handleFacebookLogin={this._handleFacebookLogin}    
+        />;
     }
 
     _handleInputChange = event => {
@@ -27,7 +29,11 @@ class Container extends Component {
     _handleSubmit = event => {
         event.preventDefault(); // 디폴트 작업을 하지말라
         //redux action will be here!
-    }
+    };
+    
+    _handleFacebookLogin = response => {
+        console.log(response);
+    };
 }
 
 

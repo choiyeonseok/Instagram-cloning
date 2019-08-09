@@ -17,7 +17,10 @@ class Container extends Component {
                 emailValue={email} 
                 usernameValue={username} 
                 fullNameValue={fullName} 
-                passwordValue={password} 
+                passwordValue={password}
+                handleInputChange={this._handleInputChange}
+                handleSubmt={this._handleSubmit}
+                handleFacebookLogin={this._handleFacebookLogin} 
             />
         );
     };
@@ -32,6 +35,10 @@ class Container extends Component {
 
     _handleSubmit = event => {
         event.preventDefault();
+    };
+    
+    _handleFacebookLogin = response => {
+        console.log(response);
     };
 }
 

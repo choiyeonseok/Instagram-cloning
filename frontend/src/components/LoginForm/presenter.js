@@ -4,8 +4,12 @@ import "../../shared/formStyles.scss";
 import FacebookLogin from "react-facebook-login";
 
 const LoginForm = (props, context) => (
-    <div className="form-component" onSubmit={props.handleSubmit}>
-        <form className="form">
+    <div className="form-component" >
+        <form 
+            className="form" 
+            onSubmit={props.handleSubmit}
+            method="post"
+        >
             <input
                 type="text"
                 placeholder={context.t("Username")}
@@ -27,6 +31,7 @@ const LoginForm = (props, context) => (
                 type="submit"
                 value={context.t("Log in")}
                 className="button"
+                onChange={props.handleInputChange}
             />
         </form>
         <span className="divider">{context.t("or")}</span>

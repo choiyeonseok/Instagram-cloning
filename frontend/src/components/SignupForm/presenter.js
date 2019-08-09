@@ -5,7 +5,7 @@ import FacebookLogin from "react-facebook-login";
 
 
 const SignupForm = (props, context) => (
-    <div className="form-component" onSubmit={props.handleSubmit}>
+    <div className="form-component" >
         <h3 className="signup-header">
             {context.t("Sign up to see photos and videos from your friends.")}
         </h3>
@@ -19,31 +19,48 @@ const SignupForm = (props, context) => (
             textButton={context.t("Log in with Facebook")}
         />
         <span className="divider">or</span>
-        <form className="form" >
+        <form 
+            className="form" 
+            onSubmit={props.handleSubmit}
+            method="post"
+        >
             <input
                 type="email"
                 placeholder={context.t("Email")}
                 className="text-input"
+                value = {props.emailValue}
+                onChange={props.handleInputChange}
+                name="email"
             />
             <input
                 type="text"
                 placeholder={context.t("Full Name")}
                 className="text-input"
+                value={props.nameValue}
+                onChange={props.handleInputChange}
+                name="name"
             />
             <input
                 type="username"
                 placeholder={context.t("Username")}
                 className="text-input"
+                value={props.usernameValue}
+                onChange={props.handleInputChange}
+                name="username"
             />
             <input
                 type="password"
                 placeholder={context.t("Password")}
                 className="text-input"
+                value={props.passwordValue}
+                onChange={props.handleInputChange}
+                name="password"
             />
             <input
                 type="submit"
                 value={context.t("Sign up")}
                 className="button"
+                onChange={props.handleInputChange}
             />
         </form>
         <p className="terms">
@@ -59,7 +76,7 @@ SignupForm.contextTypes = {
 
 SignupForm.propTypes = {
     emailValue: PropTypes.string.isRequired,
-    fullNameValue: PropTypes.string.isRequired,
+    nameValue: PropTypes.string.isRequired,
     usernameValue: PropTypes.string.isRequired,
     passwordValue: PropTypes.string.isRequired,
     handleInputChange: PropTypes.func.isRequired,

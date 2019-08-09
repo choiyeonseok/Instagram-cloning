@@ -10,6 +10,7 @@ class Container extends Component {
 
     static propTypes = {
         facebookLogin: PropTypes.func.isRequired,
+        usernameLogin: PropTypes.func.isRequired,
     }
 
 
@@ -17,7 +18,7 @@ class Container extends Component {
         const { username, password } = this.state;
         return <LoginForm 
             handleInputChange={this._handleInputChange}
-            _handleSubmit={this._handleSubmit} 
+            handleSubmit={this._handleSubmit} 
             usernameValue={username} 
             passwordValue={password} 
             handleFacebookLogin={this._handleFacebookLogin}    
@@ -33,8 +34,10 @@ class Container extends Component {
     };
 
     _handleSubmit = event => {
+        const { usernameLogin } = this.props;
+        const { username, password } = this.state;
         event.preventDefault(); // 디폴트 작업을 하지말라
-        //redux action will be here!
+        usernameLogin(username, password);
     };
 
     _handleFacebookLogin = response => {

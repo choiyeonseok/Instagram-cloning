@@ -69,7 +69,8 @@ FeedPhoto.propTypes = {
     natural_time: PropTypes.string.isRequired,
     seeingLikes: PropTypes.bool.isRequired,
     closeLikes: PropTypes.func.isRequired,
-    openLikes: PropTypes.func.isRequired
+    openLikes: PropTypes.func.isRequired,
+    name: PropTypes.string
 
 };
 

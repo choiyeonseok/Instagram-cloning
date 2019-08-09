@@ -35,7 +35,10 @@ class Container extends Component {
 
         if (key === "Enter") {
             event.preventDefault(); // 줄바꿈인 기본 설정방식을 따르지 않는다.
-            submitComment(comment)
+            submitComment(comment);
+            this.setState({
+                comment: ""
+            });
         }
     };
 }

@@ -4,6 +4,7 @@ import "./styles.scss";
 import PhotoActions from "../PhotoActions";
 import PhotoComments from "../PhotoComments";
 import TimeStamp from "../TimeStamp";
+import CommentBox from "../CommentBox";
 
 const FeedPhoto = (props, context) => {
     return (
@@ -26,6 +27,7 @@ const FeedPhoto = (props, context) => {
                     creator={props.creator.username} 
                     caption={props.caption}/>
                 <TimeStamp time={props.natural_time} />
+                <CommentBox />
             </div>
         </div>
     );

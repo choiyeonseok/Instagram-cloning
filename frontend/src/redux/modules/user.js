@@ -6,6 +6,8 @@
 const SAVE_TOKEN = "SAVE_TOKEN";
 const LOGOUT = "LOGOUT";
 const SET_USER_LIST = "SET_USER_LIST";
+const FOLLOW_USER = "FOLLOW_USER";
+const UNFOLLOW_USER = "UNFOLLOW_USER";
 
 //action creators
 
@@ -26,6 +28,20 @@ function setUserList(userList){
     return{
         type: SET_USER_LIST,
         userList    
+    }
+}
+
+function setfollowUser(userId){
+    return {
+        type: FOLLOW_USER,
+        userId
+    }
+}
+
+function setunfollowUser(userId) {
+    return {
+        type: UNFOLLOW_USER,
+        userId
     }
 }
 
@@ -120,6 +136,19 @@ function getPhotoLikes(photoId) {
     };
 }
 
+function followUser(userId){
+    return (dispatch, getState) => {
+        dispatch(setfollowUser(userId));
+    };
+}
+
+
+function unfollowUser(userId){
+    return (dispatch, getState) => {
+        dispatch(setunfollowUser(userId));
+    }
+}
+
 //initial state
 
 const initialState = {
@@ -137,6 +166,10 @@ function reducer(state=initialState, action){
             return applyLogout(state, action);
         case SET_USER_LIST:
             return applySetUserList(state, action);
+        case FOLLOW_USER:
+            return applyFollowUser(state, action);
+        case UNFOLLOW_USER:
+            return applyUnfollowUser(state, action);
         default:
             return state;
     }
@@ -168,6 +201,30 @@ function applySetUserList(state, action){
         userList
     }
 }
+
+function applyFollowUser(state, action){
+    const { userId } = action;
+    const { userList } = state;
+    const updatedUserList = userList.map(user => {
+        if (user.id === userId){
+            return { ...user, following: true };
+        }
+        return user; 
+    });
+    return { ...state, userList: updatedUserList }
+} 
+
+function applyUnfollowUser(state, action) {
+    const { userId } = action;
+    const { userList } = state;
+    const updatedUserList = userList.map(user => {
+        if (user.id === userId){
+            return { ...user, following: false };
+        }
+        return user;
+    });
+    return { ...state, userList: updatedUserList }
+}   
 //exports
 
 const actionCreators ={
@@ -176,6 +233,8 @@ const actionCreators ={
     createAccount,
     logout,
     getPhotoLikes,
+    followUser,
+    unfollowUser
 };
 
 export { actionCreators };

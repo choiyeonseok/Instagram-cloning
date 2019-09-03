@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps) => {
     const { user: { userList, imageList } } = state;
     return {
         userList,
-        imageList
+        imageList,
     };
 };
 
@@ -15,6 +15,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     const { match: { params: { searchTerm } } } = ownProps;
     return {
         searchByTerm: () => {
+            console.log(searchTerm);
             dispatch(userActions.searchByTerm(searchTerm));
         }
     };

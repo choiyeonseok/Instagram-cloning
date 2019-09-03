@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./styles.scss";
 import Loading from "../Loading";
-import UserRow from "../UserRow";
+import UserDisplay from "../UserDisplay";
 
 const Search = (props, context) => {
     return (
@@ -14,6 +14,12 @@ const Search = (props, context) => {
                     props.userList.length < 1 && (
                         <NotFound text={context.t("Nothing found :(")} />
                     )}
+                <div className="content">
+                    {!props.loading &&
+                        props.userList.length > 0 && (
+                            <RenderUserSearch userList={props.userList}/>
+                    )}
+                </div>
             </div>
             <div className="section">
                 <h4 className="title">{context.t("Photos")}</h4>
@@ -22,6 +28,12 @@ const Search = (props, context) => {
                     props.imageList.length < 1 && (
                         <NotFound text={context.t("Nothing found :(")} />
                     )}
+                <div className="content">
+                    {!props.loading &&
+                        props.imageList.length > 0 && (
+                            <RenderImageSearch imageList={props.imageList} />
+                        )}
+                </div>
             </div>
         </div>
     );
@@ -29,13 +41,15 @@ const Search = (props, context) => {
 
 
 
-const RenderSearch = props => (
+const RenderUserSearch = props => (
     <div className="search">
         {props.userList.map(user => (
-            <UserRow big={true} user={user} key={user.id}/>
+            <UserDisplay vertical={true} user={user} key={user.id}/>
         ))}
     </div>
 );
+
+const RenderImageSearch = props => props.imageList.map(photo => photo.caption);
 
 const NotFound = props => <span className="not-found">{props.text}</span>;
 

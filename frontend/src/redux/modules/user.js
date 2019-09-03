@@ -26,19 +26,13 @@ function logout(){
     }
 }
 
-// function setUserList(userList){
-//     return{
-//         type: SET_USER_LIST,
-//         userList    
-//     }
-// }
-
-function setUserList(likes) {
-    return {
+function setUserList(userList){
+    return{
         type: SET_USER_LIST,
-        likes
+        userList    
     }
 }
+
 
 function setfollowUser(userId){
     return {
@@ -324,10 +318,10 @@ function applyLogout(state, action){
 }
 
 function applySetUserList(state, action){
-    const { likes } = action;
+    const { userList } = action;
     return {
         ...state,
-        userList: likes
+        userList
     }
 }
 

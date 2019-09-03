@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./styles.scss";
 import Loading from "../Loading";
-import UserRow from "../UserRow";
+import UserDisplay from "../UserDisplay";
 
 const Explore = props => {
     if (props.loading) {
@@ -22,7 +22,7 @@ const RenderExplore = props => (
     <div className="userList">
         <h3>옴뇸뇸뇸</h3>
         {props.userList.map(user => (
-            <UserRow big={true} user={user} key={user.id}/>
+            <UserDisplay horizontal={true} user={user} key={user.id}/>
         ))}
     </div>
 );

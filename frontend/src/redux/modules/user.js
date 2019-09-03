@@ -8,6 +8,7 @@ const LOGOUT = "LOGOUT";
 const SET_USER_LIST = "SET_USER_LIST";
 const FOLLOW_USER = "FOLLOW_USER";
 const UNFOLLOW_USER = "UNFOLLOW_USER";
+const SET_EXPLORE = "SET_EXPLORE";
 
 //action creators
 
@@ -43,6 +44,13 @@ function setunfollowUser(userId) {
         type: UNFOLLOW_USER,
         userId
     }
+}
+
+function setExplore(userList){
+    return {
+        type: SET_EXPLORE,
+        userList
+    };
 }
 
 //API actions
@@ -139,6 +147,22 @@ function getPhotoLikes(photoId) {
 function followUser(userId){
     return (dispatch, getState) => {
         dispatch(setfollowUser(userId));
+        const { user : { token } } = getState();
+        console.log(token);
+        fetch(`/uesrs/${userId}/follow/`, {
+            method: "POST",
+            headers: {
+                "Authorization": `JWT ${token}`,
+                "Content-Type": "application/json"
+            }
+        })
+        .then(response => {
+            if(response.status === 401){
+                dispatch(logout())
+            } else if (!response.ok) {
+                dispatch(setunfollowUser(userId));
+            }
+        });
     };
 }
 
@@ -146,8 +170,47 @@ function followUser(userId){
 function unfollowUser(userId){
     return (dispatch, getState) => {
         dispatch(setunfollowUser(userId));
-    }
+        const { user: { token } } = getState();
+        fetch(`/uesrs/${userId}/unfollow/`, {
+            method: "POST",
+            headers: {
+                "Authorization": `JWT ${token}`,
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => {
+                if (response.status === 401) {
+                    dispatch(logout())
+                } else if (!response.ok) {
+                    dispatch(setfollowUser(userId));
+                }
+            });
+    };
 }
+
+function getExplore(){
+    return (dispatch, getState) => {
+        const { user: { token } } = getState()
+        fetch(`/users/explore/`, {
+            //default는 겟방식.
+            method: "GET",
+            headers: {
+                "Authorization": `JWT ${token}`,
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => {
+                if (response.status === 401) {
+                    dispatch(logout())
+                }
+                return response.json();
+            })
+            .then(json => {
+                dispatch(setExplore(json));
+            })
+    };
+}
+
 
 //initial state
 
@@ -171,6 +234,8 @@ function reducer(state=initialState, action){
             return applyFollowUser(state, action);
         case UNFOLLOW_USER:
             return applyUnfollowUser(state, action);
+        case SET_EXPLORE:
+            return applySetExplore(state, action);
         default:
             return state;
     }
@@ -184,7 +249,7 @@ function applySetToken(state, action){
     return {
         ...state,
         isLoggedIn : true,
-        token
+        token: token
     };
 }
 
@@ -226,6 +291,15 @@ function applyUnfollowUser(state, action) {
     });
     return { ...state, userList: updatedUserList }
 }   
+
+function applySetExplore(state, action) {
+    const { userList } = action;
+    return {
+        ...state,
+        userList
+    };
+}
+
 //exports
 
 const actionCreators ={
@@ -235,7 +309,8 @@ const actionCreators ={
     logout,
     getPhotoLikes,
     followUser,
-    unfollowUser
+    unfollowUser,
+    getExplore
 };
 
 export { actionCreators };

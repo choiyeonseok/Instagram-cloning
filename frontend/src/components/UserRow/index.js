@@ -5,11 +5,11 @@ import { actionCreators as userActions } from "../../redux/modules/user";
 const mapDispatchToProps = (dispatch, ownProps) => {
     const { user } = ownProps;
     return {
-        handleclick: () => {
+        handleClick: () => {
             if(user.following){
-                dispatch(userActions.unfollowUser())
+                dispatch(userActions.unfollowUser(user.id))
             }else{
-                dispatch(userActions.followUser())
+                dispatch(userActions.followUser(user.id))
             }
         }
     }

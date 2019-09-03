@@ -1,15 +1,15 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./styles.scss";
+import "./styles.scss";
 
 const UserRow = (props, context) => (
-    <div className="container">
+    <div className="row-container">
         <div className="column">
             <img
-                src={props.profile_image || require("../../images/noPhoto.jpg")}
+                src={props.user.profile_image || require("../../images/noPhoto.jpg")}
                 alt={props.user.username}
-                className={props.big ? styles.bigAvatar : styles.avatar}
+                className={props.big ? "bigAvatar" : "avatar"}
             />
             <div className="user">
                 <span className="username">{props.user.username}</span>
@@ -17,8 +17,9 @@ const UserRow = (props, context) => (
             </div>
         </div>
         <span className="column">
-            <button className={styles.button} onClick={props.handleClick}>
-                {props.user.following ?  context.t("Unfollow")  :  context.t("Follow") }</button>
+            <button className="button" onClick={props.handleClick}>
+                {props.user.following ?  context.t("Unfollow")  :  context.t("Follow") }
+            </button>
         </span>
     </div>
 );

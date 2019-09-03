@@ -8,7 +8,6 @@ import Ionicon from "react-ionicons";
 
 const UserList = props => (
     <div className="container">
-        <div className="overlay" />
         <div className="box">
             <header className="header">
                 <h4 className="title">{props.title}</h4>
@@ -16,13 +15,17 @@ const UserList = props => (
                     <Ionicon icon="md-close" fontSize="20px" color="black" />
                 </span>            
             </header>
-            <div className="content">{props.loading ? <Loading /> : null}</div>
+            <div className="content">
+                {props.loading ? <Loading /> : <RenderUsers list={props.userList} />}
+            </div>
         </div>
     </div>
 );
 
 const RenderUsers = props =>
-    props.list.map(user => <UserRow user={user} key={user.id} />);
+    props.list.map(user => (
+        <UserRow user={user} key={user.id} />
+    ));
 
 RenderUsers.propTypes = {
     list: PropTypes.array
@@ -31,6 +34,7 @@ RenderUsers.propTypes = {
 UserList.propTypes = {
     title: PropTypes.string.isRequired,
     loading: PropTypes.bool.isRequired,
+    users: PropTypes.array,
     userList: PropTypes.array,
     closeLikes: PropTypes.func.isRequired
 };

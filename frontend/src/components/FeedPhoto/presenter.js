@@ -10,18 +10,19 @@ import UserList from "../UserList";
 const FeedPhoto = (props, context) => {
     return (
         <div className="feed-photo">
-            <header>
+            <header className="header">
                 <img
                     src={props.creator.profile_image || require("../../images/noPhoto.jpg")}
                     alt={props.creator.username}
+                    className="image"
                 />
-                <div>
-                    <span>{props.creator.username}</span>
-                    <span>{props.location}</span>
+                <div className="header-column">
+                    <span className="creator">{props.creator.username}</span>
+                    <span className="location">{props.location}</span>
                 </div>
             </header>
             <img src={props.file} alt={props.caption} />
-            <div>
+            <div className="meta">
                 <PhotoActions 
                     number={props.like_count} 
                     isLiked={props.is_liked} 
@@ -50,7 +51,8 @@ FeedPhoto.contextTypes = {
 FeedPhoto.propTypes = {
     creator: PropTypes.shape({
         profile_image: PropTypes.string.isRequired,
-        username: PropTypes.string.isRequired
+        username: PropTypes.string.isRequired,
+        name: PropTypes.string
     }),
     location: PropTypes.string.isRequired,
     file: PropTypes.string.isRequired,

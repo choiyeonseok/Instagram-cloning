@@ -153,7 +153,8 @@ function unfollowUser(userId){
 
 const initialState = {
     isLoggedIn: localStorage.getItem("jwt") ? true : false, 
-    token: localStorage.getItem("jwt")
+    token: localStorage.getItem("jwt"),
+    userList: []
 }; 
 
 //reducer

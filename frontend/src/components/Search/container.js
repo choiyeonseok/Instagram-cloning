@@ -1,0 +1,39 @@
+import React, { Component } from "react";
+import Search from "./presenter";
+import PropTypes from "prop-types";
+
+class Container extends Component {
+    //initial state
+    state = {
+        loading : true
+    }
+
+    static propTypes = {
+        searchByTerm: PropTypes.func.isRequired,
+        userList: PropTypes.array,
+        imageList: PropTypes.array
+    };
+
+    componentDidMount() {
+        const { searchByTerm } = this.props;
+        searchByTerm();
+    }
+
+    componentWillReceiveProps = nextProps => {
+        if (nextProps.userList && nextProps.imageList) {
+            this.setState({
+                loading: false
+            });
+        }
+
+    };
+
+    render () {
+        const { userList, imageList } = this.props;
+        return (
+            <Search {...this.state} userList={userList} imageList={imageList} />
+        );
+    }
+}
+
+export default Container;

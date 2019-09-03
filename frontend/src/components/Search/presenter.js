@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import "./styles.scss";
 import Loading from "../Loading";
 import UserDisplay from "../UserDisplay";
+import PhotoDisplay from "../PhotoDisplay";
 
 const Search = (props, context) => {
     return (
@@ -49,7 +50,8 @@ const RenderUserSearch = props => (
     </div>
 );
 
-const RenderImageSearch = props => props.imageList.map(photo => photo.caption);
+const RenderImageSearch = props =>
+    props.imageList.map(photo => <PhotoDisplay photo={photo} key={photo.id} />);
 
 const NotFound = props => <span className="not-found">{props.text}</span>;
 
@@ -60,7 +62,7 @@ Search.contextTypes = {
 Search.propTypes = {
     loading: PropTypes.bool.isRequired,
     imageList: PropTypes.array,
-    photoList: PropTypes.array
+    userList: PropTypes.array
 }
 
 export default Search;
